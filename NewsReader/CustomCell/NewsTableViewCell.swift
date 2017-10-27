@@ -13,6 +13,7 @@ class NewsTableViewCell: UITableViewCell {
     //Outlet
     @IBOutlet weak var newsCellImage: UIImageView!
     @IBOutlet weak var newsCellTItleLabel: UILabel!
+    @IBOutlet weak var newsCellSourceNameLabel: UILabel!
     
     
     override func awakeFromNib() {

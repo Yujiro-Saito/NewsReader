@@ -13,4 +13,5 @@ struct ArticleModel {
     var articleTitle: String?
     var articleUrl: String?
     var articleImageURL: String?
+    var articleSource: String?
 }

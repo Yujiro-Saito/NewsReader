@@ -9,6 +9,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="AmericanTypewriter.ttc">
+            <string>AmericanTypewriter-Bold</string>
+        </array>
         <array key="AvenirNext.ttc">
             <string>AvenirNext-Regular</string>
         </array>
@@ -33,35 +36,47 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdP-7i-0yu">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdP-7i-0yu" customClass="RoundedImage" customModule="NewsReader" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="19" width="60" height="60"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="6Te-Bj-bxk"/>
-                                                        <constraint firstAttribute="width" constant="60" id="Mnz-Uq-eNd"/>
+                                                        <constraint firstAttribute="width" constant="60" id="9dl-4b-PFV"/>
+                                                        <constraint firstAttribute="height" constant="60" id="fqD-Lg-CJC"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f4A-25-CYn">
-                                                    <rect key="frame" x="76" y="19" width="277" height="60"/>
+                                                    <rect key="frame" x="76" y="19" width="277" height="48"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="hcN-HD-64a"/>
+                                                        <constraint firstAttribute="height" constant="48" id="ROP-gn-fPK"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="15"/>
                                                     <color key="textColor" red="0.27960708449939786" green="0.27960708449939786" blue="0.27960708449939786" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNR-7i-2QG">
+                                                    <rect key="frame" x="76" y="75" width="291" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="8Ms-9Y-vQC"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="AmericanTypewriter-Bold" family="American Typewriter" pointSize="15"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="f4A-25-CYn" secondAttribute="bottom" constant="20.5" id="5of-Ge-kYI"/>
-                                                <constraint firstItem="f4A-25-CYn" firstAttribute="top" secondItem="tI7-kr-vyA" secondAttribute="top" constant="19" id="8jY-fI-tgc"/>
-                                                <constraint firstItem="hdP-7i-0yu" firstAttribute="leading" secondItem="tI7-kr-vyA" secondAttribute="leading" constant="8" id="HNH-ah-CiP"/>
-                                                <constraint firstAttribute="trailing" secondItem="f4A-25-CYn" secondAttribute="trailing" constant="22" id="TpO-zY-qT3"/>
-                                                <constraint firstAttribute="bottom" secondItem="hdP-7i-0yu" secondAttribute="bottom" constant="20.5" id="VYF-ze-Z6H"/>
-                                                <constraint firstItem="f4A-25-CYn" firstAttribute="leading" secondItem="hdP-7i-0yu" secondAttribute="trailing" constant="8" id="kO4-4n-ika"/>
-                                                <constraint firstItem="hdP-7i-0yu" firstAttribute="top" secondItem="tI7-kr-vyA" secondAttribute="top" constant="19" id="vU7-Q2-oEg"/>
+                                                <constraint firstItem="f4A-25-CYn" firstAttribute="leading" secondItem="hdP-7i-0yu" secondAttribute="trailing" constant="8" id="4Ut-BE-h05"/>
+                                                <constraint firstItem="eNR-7i-2QG" firstAttribute="leading" secondItem="hdP-7i-0yu" secondAttribute="trailing" constant="8" id="5e8-wa-Vvj"/>
+                                                <constraint firstItem="f4A-25-CYn" firstAttribute="top" secondItem="tI7-kr-vyA" secondAttribute="top" constant="19" id="GCq-5s-mhp"/>
+                                                <constraint firstAttribute="trailing" secondItem="eNR-7i-2QG" secondAttribute="trailing" constant="8" id="R0x-50-bON"/>
+                                                <constraint firstAttribute="bottom" secondItem="eNR-7i-2QG" secondAttribute="bottom" constant="4.5" id="STn-0W-Hem"/>
+                                                <constraint firstAttribute="bottom" secondItem="hdP-7i-0yu" secondAttribute="bottom" constant="20.5" id="ZFs-pb-L1y"/>
+                                                <constraint firstItem="hdP-7i-0yu" firstAttribute="leading" secondItem="tI7-kr-vyA" secondAttribute="leading" constant="8" id="fyI-e8-eis"/>
+                                                <constraint firstItem="hdP-7i-0yu" firstAttribute="top" secondItem="tI7-kr-vyA" secondAttribute="top" constant="19" id="hVl-Uz-zJZ"/>
+                                                <constraint firstAttribute="trailing" secondItem="f4A-25-CYn" secondAttribute="trailing" constant="22" id="xBb-Ap-eJq"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="newsCellImage" destination="hdP-7i-0yu" id="18o-xn-aRS"/>
+                                            <outlet property="newsCellSourceNameLabel" destination="eNR-7i-2QG" id="s95-bN-GLy"/>
                                             <outlet property="newsCellTItleLabel" destination="f4A-25-CYn" id="Nyt-ak-WQk"/>
                                         </connections>
                                     </tableViewCell>
@@ -125,6 +140,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="yAr-d2-5p4" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="szi-mh-CNq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

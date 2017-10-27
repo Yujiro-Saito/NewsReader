@@ -20,10 +20,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     //Properties
     var newsArticleArray: [ArticleModel] = []
     typealias JsonFormat = [String : Any]
-    let requestUrl = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
-    
-    
-    
+    let bbcURL = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
+    let bloombergUrl = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
+    let nationalURL = "https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
+    let mashableURL = "https://newsapi.org/v1/articles?source=mashable&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
     
     
     override func viewDidLoad() {
@@ -32,12 +32,16 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //Table setting
         self.newsTable.delegate = self
         self.newsTable.dataSource = self
-        self.callAlamofire(url: requestUrl)
+        self.callAlamofire(url: mashableURL)
+        self.callAlamofire(url: bloombergUrl)
+        self.callAlamofire(url: nationalURL)
+        self.callAlamofire(url: bbcURL)
         
     }
     
     //Alamofire(Request and Response)
     func callAlamofire(url: String) {
+        self.newsArticleArray = [ArticleModel]()
         Alamofire.request(url).response { (response) in
             self.parseJsonData(JsonData: response.data!)
         }
@@ -45,14 +49,13 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //Jsonデータを取得
     func parseJsonData(JsonData: Data) {
-        self.newsArticleArray = [ArticleModel]()
         
         do {
             //Convert to Json
             let readableJson = try JSONSerialization.jsonObject(with: JsonData, options: .mutableContainers) as! JsonFormat
             
             
-            //Fetch json data
+            //Fetch json data(Detect article details)
             if let articles = readableJson["articles"] as? [JsonFormat] {
                 
                 for a in 0..<articles.count {
@@ -69,10 +72,29 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                         articleModel.articleUrl = articleUrl
                         articleModel.articleImageURL = articleImageUrl
                         
+                        //URLからニュースサイト名を判別(セルにソースサイト名を載せるため)
+                        let isUrlFrom = articleUrl
+                        if (isUrlFrom.contains("bbc")){
+                            //BBC
+                            articleModel.articleSource = "BBC"
+                        } else if (isUrlFrom.contains("bloomberg")) {
+                            //bloomberg
+                            articleModel.articleSource = "bloomberg"
+                        } else if (isUrlFrom.contains("mashable")) {
+                            //mashable
+                            articleModel.articleSource = "mashable"
+                        } else if (isUrlFrom.contains("ationalgeographic")) {
+                            //nationalgeographic
+                            articleModel.articleSource = "Nationalgeographic"
+                        }
+                        
+                        
+                        
                     }
                     
-                    self.newsArticleArray.append(articleModel)
                     
+                    self.newsArticleArray.append(articleModel)
+                    print(newsArticleArray)
                     
                 }
                 
@@ -117,7 +139,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         //News情報をセルに載せる
         cell?.newsCellTItleLabel.text = self.newsArticleArray[indexPath.row].articleTitle
         cell?.newsCellImage.af_setImage(withURL: URL(string: self.newsArticleArray[indexPath.row].articleImageURL!)!)
-        
+        cell?.newsCellSourceNameLabel.text = self.newsArticleArray[indexPath.row].articleSource
         
         
         return cell!
