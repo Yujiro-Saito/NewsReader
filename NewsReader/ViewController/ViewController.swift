@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import AlamofireImage
+import SafariServices
 
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -121,6 +122,38 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         return cell!
     }
+    
+    //TableViewタップ時
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Selected Article
+        let selectedArticle = self.newsArticleArray[indexPath.row]
+        
+        if let selectedUrl = selectedArticle.articleUrl {
+            //Safari起動
+            let safariVC = SFSafariViewController(url: URL(string: selectedUrl)!)
+            self.present(safariVC,animated: true, completion: nil)
+            
+        } else {
+            //Alert
+            let alertController = UIAlertController(title: "エラー", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+            
+            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
+                (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+            alertController.addAction(okAction)
+            self.present(alertController, animated:  true, completion: nil)
+        }
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     
     
 
