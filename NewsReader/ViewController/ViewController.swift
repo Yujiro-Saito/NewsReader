@@ -24,6 +24,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let bloombergUrl = "https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
     let nationalURL = "https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
     let mashableURL = "https://newsapi.org/v1/articles?source=mashable&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
+    var selectedArticleUrl = String()
     
     
     override func viewDidLoad() {
@@ -94,7 +95,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     
                     
                     self.newsArticleArray.append(articleModel)
-                    print(newsArticleArray)
                     
                 }
                 
@@ -132,7 +132,6 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         
         //Cell setting
         let cell = self.newsTable.dequeueReusableCell(withIdentifier: "NewsCell", for: indexPath) as? NewsTableViewCell
-        
         //画像を読み込むまでは何も入れない
         cell?.newsCellImage.image = nil
         
@@ -147,32 +146,23 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     //TableViewタップ時
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Selected Article
-        let selectedArticle = self.newsArticleArray[indexPath.row]
         
-        if let selectedUrl = selectedArticle.articleUrl {
-            //Safari起動
-            let safariVC = SFSafariViewController(url: URL(string: selectedUrl)!)
-            self.present(safariVC,animated: true, completion: nil)
-            
-        } else {
-            //Alert
-            let alertController = UIAlertController(title: "エラー", message: nil, preferredStyle: UIAlertControllerStyle.alert)
-            
-            let okAction = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default) {
-                (action) in
-                self.dismiss(animated: true, completion: nil)
-            }
-            
-            alertController.addAction(okAction)
-            self.present(alertController, animated:  true, completion: nil)
-        }
-        
-        
+        self.selectedArticleUrl = self.newsArticleArray[indexPath.row].articleUrl!
+        //Webview Controllerに遷移
+        performSegue(withIdentifier: "Webview", sender: nil)
     }
     
-    
-    
+    //WebView　Controllerに必要なデータを準備
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "Webview" {
+            
+            let webviewVC = (segue.destination as? WebViewViewController)!
+            //選択した記事のURLを渡す
+            webviewVC.articleURL = self.selectedArticleUrl
+        }
+        
+    }
     
     
     
