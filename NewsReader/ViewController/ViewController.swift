@@ -25,7 +25,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     let nationalURL = "https://newsapi.org/v1/articles?source=national-geographic&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
     let mashableURL = "https://newsapi.org/v1/articles?source=mashable&sortBy=top&apiKey=cb6bd682f63c418e91691a265d1962c1"
     var selectedArticleUrl = String()
-    
+    var selectedArticleTitle = String()
+    var selectedArticleImageURL = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -148,6 +149,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.selectedArticleUrl = self.newsArticleArray[indexPath.row].articleUrl!
+        self.selectedArticleTitle = self.newsArticleArray[indexPath.row].articleTitle!
+        self.selectedArticleImageURL = self.newsArticleArray[indexPath.row].articleImageURL!
         //Webview Controllerに遷移
         performSegue(withIdentifier: "Webview", sender: nil)
     }
@@ -160,16 +163,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             let webviewVC = (segue.destination as? WebViewViewController)!
             //選択した記事のURLを渡す
             webviewVC.articleURL = self.selectedArticleUrl
+            webviewVC.articleTitle = self.selectedArticleTitle
+            webviewVC.articleImageURL = self.selectedArticleImageURL
         }
         
     }
     
-    
-    
-    
-    
-
-   
-
 }
 
