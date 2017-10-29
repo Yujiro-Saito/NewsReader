@@ -1,6 +1,4 @@
 # NewsReader App
-This app is written in Swift 
-
 ## API
 * https://newsapi.org/
 
