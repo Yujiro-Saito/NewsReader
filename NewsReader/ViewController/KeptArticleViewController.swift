@@ -26,6 +26,10 @@ class KeptArticleViewController: UIViewController,UITableViewDelegate,UITableVie
         self.keptArticleTable.delegate = self
         self.keptArticleTable.dataSource = self
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.keptArticleTable.reloadData()
     }
 
@@ -61,6 +65,17 @@ class KeptArticleViewController: UIViewController,UITableViewDelegate,UITableVie
         self.selectedArticleImageURL = articleModelData[indexPath.row].imageURL
         
         performSegue(withIdentifier: "Webviewer", sender: nil)
+    }
+    
+    //記事の削除
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let article = articleModelData[indexPath.row]
+            try! realm.write {
+                realm.delete(article)
+            }
+            self.keptArticleTable.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
     
     //WebView　Controllerに必要なデータを準備
