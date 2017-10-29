@@ -2,4 +2,4 @@
 ## This app is written in Swift. 
 ### News are mostly from BBC news, Mashable,Nationalgeographic and Bloomberg.
 #### API: News API(https://newsapi.org/)
-![Qiita](https://qiita-image-store.s3.amazonaws.com/0/45617/015bd058-7ea0-e6a5-b9cb-36a4fb38e59c.png "Qiita")
+![Qiita](http://is2.mzstatic.com/image/thumb/Purple128/v4/3c/1d/4d/3c1d4df6-1237-1a2c-1771-c56bb7c2330f/source/392x696bb.jpg "Qiita")
