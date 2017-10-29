@@ -1,4 +1,5 @@
 # NewsReader App
+
 ## API
 * https://newsapi.org/
 
