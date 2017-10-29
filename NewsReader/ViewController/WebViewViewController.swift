@@ -9,7 +9,14 @@
 import UIKit
 import RealmSwift
 
-
+//Realm
+internal let realm = try! Realm()
+internal var articleModelData: Results<ArticleData> {
+    
+    get {
+        return realm.objects(ArticleData.self)
+    }
+}
 
 //保存記事用のクラス
 internal class ArticleData: Object {
@@ -29,21 +36,9 @@ class WebViewViewController: UIViewController,UIWebViewDelegate {
     //Outlet
     @IBOutlet weak var webViewer: UIWebView!
     
-    //Realm
-    let realm = try! Realm()
-    
-    var articleModelData: Results<ArticleData> {
-        
-        get {
-            return realm.objects(ArticleData.self)
-        }
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(self.realm.objects(ArticleData.self))
+        print(realm.objects(ArticleData.self))
         //Webview Delegate設定
         self.webViewer.delegate = self
         //記事の読み込み
@@ -72,8 +67,8 @@ class WebViewViewController: UIViewController,UIWebViewDelegate {
         keptArticle.imageURL = self.articleImageURL
         
         //Realm DBに保存
-        try! self.realm.write {
-            self.realm.add(keptArticle)
+        try! realm.write {
+            realm.add(keptArticle)
             print("保存を完了しました")
             let alert: UIAlertController = UIAlertController(title: "保存しました", message: nil, preferredStyle:  UIAlertControllerStyle.alert)
             

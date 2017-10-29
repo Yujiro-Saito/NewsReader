@@ -13,6 +13,7 @@
             <string>AmericanTypewriter-Bold</string>
         </array>
         <array key="AvenirNext.ttc">
+            <string>AvenirNext-DemiBold</string>
             <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
@@ -105,18 +106,72 @@
         <!--Keep-->
         <scene sceneID="XoL-uh-Y8T">
             <objects>
-                <viewController id="xdR-Bp-tU5" sceneMemberID="viewController">
+                <viewController id="xdR-Bp-tU5" customClass="KeptArticleViewController" customModule="NewsReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="O00-kQ-pKl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Mj-x3-woA">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="KeptCell" rowHeight="100" id="gds-5h-C3r" customClass="KeptArticleTableViewCell" customModule="NewsReader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gds-5h-C3r" id="ONs-34-kDx">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Zw-0t-6FT" customClass="RoundedImage" customModule="NewsReader" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="9" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="1lJ-hl-rnj"/>
+                                                        <constraint firstAttribute="width" constant="80" id="Ohe-7T-vVc"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="add-5J-sD9">
+                                                    <rect key="frame" x="96" y="9" width="271" height="80"/>
+                                                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1Zw-0t-6FT" firstAttribute="top" secondItem="ONs-34-kDx" secondAttribute="top" constant="9" id="2JC-SG-fPc"/>
+                                                <constraint firstItem="1Zw-0t-6FT" firstAttribute="leading" secondItem="ONs-34-kDx" secondAttribute="leading" constant="8" id="60F-6R-Guv"/>
+                                                <constraint firstAttribute="trailing" secondItem="add-5J-sD9" secondAttribute="trailing" constant="8" id="OdV-oo-ss7"/>
+                                                <constraint firstItem="add-5J-sD9" firstAttribute="leading" secondItem="1Zw-0t-6FT" secondAttribute="trailing" constant="8" id="nX0-jg-3AY"/>
+                                                <constraint firstAttribute="bottom" secondItem="1Zw-0t-6FT" secondAttribute="bottom" constant="10.5" id="q5u-1k-fjg"/>
+                                                <constraint firstItem="add-5J-sD9" firstAttribute="top" secondItem="ONs-34-kDx" secondAttribute="top" constant="9" id="wFi-q7-V1Y"/>
+                                                <constraint firstAttribute="bottom" secondItem="add-5J-sD9" secondAttribute="bottom" constant="10.5" id="wI1-CF-I5C"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="articleImage" destination="1Zw-0t-6FT" id="IZF-oj-Azv"/>
+                                            <outlet property="articleTitle" destination="add-5J-sD9" id="ckf-P7-tzk"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3Mj-x3-woA" firstAttribute="trailing" secondItem="5Rh-Cc-5yc" secondAttribute="trailing" id="FoS-h4-Lsh"/>
+                            <constraint firstItem="3Mj-x3-woA" firstAttribute="bottom" secondItem="5Rh-Cc-5yc" secondAttribute="bottom" id="G5j-hh-FRM"/>
+                            <constraint firstItem="3Mj-x3-woA" firstAttribute="top" secondItem="O00-kQ-pKl" secondAttribute="top" id="bxj-V0-fBJ"/>
+                            <constraint firstItem="3Mj-x3-woA" firstAttribute="leading" secondItem="5Rh-Cc-5yc" secondAttribute="leading" id="r1d-uA-Jhc"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="5Rh-Cc-5yc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Keep" id="v5i-1w-1TO"/>
+                    <connections>
+                        <outlet property="keptArticleTable" destination="3Mj-x3-woA" id="636-kQ-WKu"/>
+                        <segue destination="qgI-lt-ASc" kind="show" identifier="Webviewer" id="rsu-3i-37s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnB-rk-qhp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="695" y="152"/>
+            <point key="canvasLocation" x="-1159.2" y="1046.6266866566718"/>
         </scene>
         <!--Web View View Controller-->
         <scene sceneID="DgW-Sf-fkE">
@@ -172,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="V68-cn-f4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-655" y="949"/>
+            <point key="canvasLocation" x="-132" y="1047"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="uPI-Hc-vqQ">
@@ -186,7 +241,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="lc6-1l-imc"/>
-                        <segue destination="xdR-Bp-tU5" kind="relationship" relationship="viewControllers" id="7gd-pa-D3o"/>
+                        <segue destination="xdR-Bp-tU5" kind="relationship" relationship="viewControllers" id="1sQ-jq-vuf"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="deF-hK-alW" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -198,4 +253,7 @@
         <image name="close" width="128" height="128"/>
         <image name="save" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="rsu-3i-37s"/>
+    </inferredMetricsTieBreakers>
 </document>
